@@ -10,7 +10,7 @@ import {
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-
+import Task from "./Task";
 import React from "react";
 
 const ModalForm = () => {
@@ -22,6 +22,7 @@ const ModalForm = () => {
 
   return (
     <div>
+    
       <Box
         sx={{
           width: 600,
@@ -55,6 +56,7 @@ const ModalForm = () => {
           </LocalizationProvider>
         </FormControl>
       </Box>
+
     </div>
   );
 };
