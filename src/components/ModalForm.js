@@ -10,7 +10,6 @@ import {
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import Task from "./Task";
 import React from "react";
 
 const ModalForm = () => {
@@ -18,7 +17,7 @@ const ModalForm = () => {
   const [value, setValue] = React.useState(dayjs());
 
   const handleChange = (newValue) => {
-    setValue(newValue);
+      setValue(newValue);
   };
  
   return (
