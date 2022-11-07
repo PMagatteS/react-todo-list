@@ -22,7 +22,7 @@ export const StateContext = ({children}) => {
                 return null
             
         }
-    }
+    };
 
     const removeTask = (task, action) => {
         switch(action) {
@@ -42,7 +42,7 @@ export const StateContext = ({children}) => {
                 return null
             
             }
-    }
+    };
 
     const changeDate = (newValue) => {
         const newDate = dayjs(newValue).toString()
@@ -53,6 +53,24 @@ export const StateContext = ({children}) => {
         }
       };
      
+    const getName = (e) => {
+        setTaskName(e.target.value)
+    };
+
+    const getpriority = (e) => {
+        setPriority(e.target.value)
+    };
+
+    const createTask = () => {
+        const task = {
+            name : taskName,
+            date: date,
+            priority: priority,
+            finished: false
+        }
+
+        addTask(task, 'Task List')
+    }
 
     return (
         <contex.Provider 

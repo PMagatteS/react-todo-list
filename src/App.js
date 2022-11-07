@@ -1,13 +1,12 @@
 import React, {useContext} from "react";
 // import Navbar from "./components/Navbar";
 import ModalForm from "./components/ModalForm";
-
+import { useStateContext } from "./utils/HandleTasks";
 
 
 
 function App() {
-
-
+ 
   return (
     <div className="App">
       {/* <Navbar></Navbar> */}
