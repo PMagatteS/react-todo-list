@@ -62,6 +62,17 @@ export const StateContext = ({children}) => {
     };
 
     const createTask = () => {
+
+        if(dayjs().isAfter(date)){
+            // will handle this error later
+           return 
+
+        }
+
+        if (taskName.length ||  priority.length < 1){
+            // will handle this error later
+           return 
+        }
         const task = {
             name : taskName,
             date: date,

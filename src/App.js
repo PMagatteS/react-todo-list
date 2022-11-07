@@ -7,6 +7,14 @@ import { useStateContext } from "./utils/HandleTasks";
 
 function App() {
  
+  const {taskList,
+         finishedTask, 
+         addTask,
+         removeTask
+} = useStateContext();
+
+
+    
   return (
     <div className="App">
       {/* <Navbar></Navbar> */}
