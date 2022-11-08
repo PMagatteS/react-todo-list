@@ -7,7 +7,7 @@ const contex = createContext();
 
 export const StateContext = ({children}) => {
     const [taskName, setTaskName] = useState("")
-    const [priority, setPriority] = useState("")
+    const [priority, setPriority] = useState("Low")
     const [date, setDate]         = useState(dayjs())
     const [taskList, setTaskList] = useState([]);
     const [finishedTask, setFinishedTask] = useState([]);
@@ -50,15 +50,18 @@ export const StateContext = ({children}) => {
           console.log('will handle this error later');
         }else{
           setDate(newValue);
+          console.log(date);
         }
       };
      
     const getName = (e) => {
         setTaskName(e.target.value)
+        
     };
-
-    const getpriority = (e) => {
+    
+    const getPriority = (e) => {
         setPriority(e.target.value)
+        
     };
 
     const createTask = () => {
@@ -69,7 +72,7 @@ export const StateContext = ({children}) => {
 
         }
 
-        if (taskName.length ||  priority.length < 1){
+        if (taskName.length  < 1){
             // will handle this error later
            return 
         }
@@ -88,8 +91,15 @@ export const StateContext = ({children}) => {
         value={{
             taskList,
              finishedTask,
+             taskName,
+             priority,
+             date,
              addTask,
              removeTask,
+             changeDate,
+             getName, 
+             getPriority,
+             createTask,
              }}>
             {children}
         </contex.Provider>
