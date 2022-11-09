@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   Box,
   FormControl,
@@ -6,6 +5,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Modal,
 } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -15,11 +15,14 @@ import React from "react";
 
 const ModalForm = () => {
 
-  const {date, changeDate, getName, priority, getPriority} = useStateContext();
+  const {date, changeDate, getName, priority, getPriority, openModal, toggleModal} = useStateContext();
   
   return (
     <div>
-   
+      <Modal
+       open={openModal}
+       onClose={toggleModal}
+      >
       <Box
         sx={{
           width: 600,
@@ -53,6 +56,7 @@ const ModalForm = () => {
           </LocalizationProvider>
         </FormControl>
       </Box>
+          </Modal>
 
     </div>
   );

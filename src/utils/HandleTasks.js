@@ -6,11 +6,12 @@ import React, {useContext, createContext, useState} from 'react';
 const contex = createContext();
 
 export const StateContext = ({children}) => {
-    const [taskName, setTaskName] = useState("")
-    const [priority, setPriority] = useState("Low")
-    const [date, setDate]         = useState(dayjs())
+    const [taskName, setTaskName] = useState("");
+    const [priority, setPriority] = useState("Low");
+    const [date, setDate]         = useState(dayjs());
     const [taskList, setTaskList] = useState([]);
     const [finishedTask, setFinishedTask] = useState([]);
+    const [openModal, setOpenModal] = useState(false)   
 
     const addTask = (task, action) => {
         switch(action) {
@@ -86,6 +87,11 @@ export const StateContext = ({children}) => {
         addTask(task, 'Task List')
     }
 
+    const toggleModal = () => {
+        setOpenModal(!openModal)
+        
+    }
+
     return (
         <contex.Provider 
         value={{
@@ -94,12 +100,14 @@ export const StateContext = ({children}) => {
              taskName,
              priority,
              date,
+             openModal,
              addTask,
              removeTask,
              changeDate,
              getName, 
              getPriority,
              createTask,
+             toggleModal,
              }}>
             {children}
         </contex.Provider>

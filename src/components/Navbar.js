@@ -1,7 +1,10 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 import { AddCircleOutlineRounded } from "@material-ui/icons";
+import { useStateContext } from "../utils/HandleTasks";
+
 const Navbar = () => {
+  const {toggleModal} = useStateContext()
   return (
     <div>
       <AppBar position="absolute">
@@ -15,7 +18,7 @@ const Navbar = () => {
           >
             Todo list
           </Typography>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={toggleModal} >
             <AddCircleOutlineRounded></AddCircleOutlineRounded>
           </IconButton>
         </Toolbar>
