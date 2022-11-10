@@ -47,7 +47,7 @@ export const StateContext = ({children}) => {
 
     const changeDate = (newValue) => {
         const newDate = dayjs(newValue).toString()
-        if(!dayjs().isBefore(newDate)){
+        if(!dayjs().isBefore(newDate)||dayjs(newValue).toString()==="Invalid Date"){
           console.log('will handle this error later');
         }else{
           setDate(newValue);

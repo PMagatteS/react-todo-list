@@ -6,11 +6,16 @@ import {
   Select,
   MenuItem,
   Modal,
+  Button,
+  IconButton,
 } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { useStateContext } from "../utils/HandleTasks";
+import { formStyle } from "../style";
+import { Close } from "@material-ui/icons";
+
 import React from "react";
 
 const ModalForm = () => {
@@ -24,18 +29,13 @@ const ModalForm = () => {
        onClose={toggleModal}
       >
       <Box
-        sx={{
-          width: 600,
-          height: 600,
-          marginTop: "200px",
-          marginLeft: "200px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "15px",
-        }}
+        sx={formStyle.formBox}
       >
-        <FormControl variant="standard">
-          <TextField required label="Choose a task name"  onChange={getName} ></TextField>
+         <IconButton color="primary" sx={formStyle.closeButton} >
+            <Close></Close>
+          </IconButton>
+        <FormControl >
+          <TextField variant="standard" required label="Choose a task name"  onChange={getName} ></TextField>
         </FormControl>
         <FormControl variant="standard">
           <InputLabel id="priority-label">Priority</InputLabel>
@@ -45,9 +45,10 @@ const ModalForm = () => {
             <MenuItem value="High"  >High</MenuItem>
           </Select>
         </FormControl>
-        <FormControl>
+        <FormControl >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
+              variant="standard"
               label="Pick a date"
               value={date}
               onChange={changeDate}
@@ -55,6 +56,7 @@ const ModalForm = () => {
             />
           </LocalizationProvider>
         </FormControl>
+        <Button  variant="contained" >Create task</Button>
       </Box>
           </Modal>
 
