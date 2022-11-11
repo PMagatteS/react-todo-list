@@ -29,3 +29,23 @@ export const formStyle = {
     },
     
 }
+
+export const navbarStyle={
+    addButton: {
+        display: ["none", "block", "block"],
+
+    },
+
+    addButtonMobile:{
+        display: [null, "none", "none"],
+        position: "fixed",
+        bottom: "15%",
+        right: 10,
+
+    },
+    
+    burgerMenu:{
+        display: [null, "none", "none"],
+
+    },
+}

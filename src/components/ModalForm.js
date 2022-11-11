@@ -31,7 +31,7 @@ const ModalForm = () => {
       <Box
         sx={formStyle.formBox}
       >
-         <IconButton color="primary" sx={formStyle.closeButton} >
+         <IconButton color="primary" onClick={toggleModal} sx={formStyle.closeButton} >
             <Close></Close>
           </IconButton>
         <FormControl >
