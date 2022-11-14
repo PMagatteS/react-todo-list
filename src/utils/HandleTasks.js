@@ -11,7 +11,8 @@ export const StateContext = ({children}) => {
     const [date, setDate]         = useState(dayjs());
     const [taskList, setTaskList] = useState([]);
     const [finishedTask, setFinishedTask] = useState([]);
-    const [openModal, setOpenModal] = useState(false)   
+    const [openModal, setOpenModal] = useState(false) 
+    const [openDrawer, setOpenDrawer] = useState(false)  
 
     const addTask = (task, action) => {
         switch(action) {
@@ -92,6 +93,10 @@ export const StateContext = ({children}) => {
         
     }
 
+    const toggleDrawer = () => {
+        setOpenDrawer(!openDrawer)
+    }
+
     return (
         <contex.Provider 
         value={{
@@ -101,6 +106,7 @@ export const StateContext = ({children}) => {
              priority,
              date,
              openModal,
+             openDrawer,
              addTask,
              removeTask,
              changeDate,
@@ -108,6 +114,7 @@ export const StateContext = ({children}) => {
              getPriority,
              createTask,
              toggleModal,
+             toggleDrawer,
              }}>
             {children}
         </contex.Provider>
