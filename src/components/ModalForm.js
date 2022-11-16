@@ -20,7 +20,7 @@ import React from "react";
 
 const ModalForm = () => {
 
-  const {date, changeDate, getName, priority, getPriority, openModal, toggleModal} = useStateContext();
+  const {date, changeDate, getName, priority, getPriority, openModal, toggleModal, createTask} = useStateContext();
   
   return (
     <div>
@@ -56,7 +56,7 @@ const ModalForm = () => {
             />
           </LocalizationProvider>
         </FormControl>
-        <Button  variant="contained" >Create task</Button>
+        <Button  variant="contained" onClick={createTask} >Create task</Button>
       </Box>
           </Modal>
 

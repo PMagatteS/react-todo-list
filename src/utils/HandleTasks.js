@@ -10,16 +10,18 @@ export const StateContext = ({children}) => {
     const [priority, setPriority] = useState("Low");
     const [date, setDate]         = useState(dayjs());
     const [taskList, setTaskList] = useState([]);
-    const [finishedTask, setFinishedTask] = useState([]);
+    const [completedTask, setCompletedTask] = useState([]);
     const [openModal, setOpenModal] = useState(false) 
     const [openDrawer, setOpenDrawer] = useState(false)  
+    const [showTasks, setShowTasks] = useState(true)
+  
 
     const addTask = (task, action) => {
         switch(action) {
             case 'Task List':
                 return setTaskList((previous) => [task, ...previous])
             case 'Finished Task':
-                return setFinishedTask((previous) => [task, ...previous])
+                return setCompletedTask((previous) => [task, ...previous])
             default:
                 return null
             
@@ -35,10 +37,10 @@ export const StateContext = ({children}) => {
                 return setTaskList(newTaskArr)
                 
             case 'Finished Task':
-                const newFinishedArr = finishedTask
+                const newFinishedArr = completedTask
                 const newFinishedindex = newFinishedArr.indexOf(task)
                 newFinishedArr.splice(newFinishedindex, 1)
-                return setFinishedTask(newFinishedArr)
+                return setCompletedTask(newFinishedArr)
 
             default:
                 return null
@@ -52,7 +54,6 @@ export const StateContext = ({children}) => {
           console.log('will handle this error later');
         }else{
           setDate(newValue);
-          console.log(date);
         }
       };
      
@@ -82,7 +83,7 @@ export const StateContext = ({children}) => {
             name : taskName,
             date: date,
             priority: priority,
-            finished: false
+            completed: false
         }
 
         addTask(task, 'Task List')
@@ -97,16 +98,21 @@ export const StateContext = ({children}) => {
         setOpenDrawer(!openDrawer)
     }
 
+    const showTasksList = (bool) => {
+        setShowTasks(bool)
+    }
+
     return (
         <contex.Provider 
         value={{
             taskList,
-             finishedTask,
+             completedTask,
              taskName,
              priority,
              date,
              openModal,
              openDrawer,
+             showTasks,
              addTask,
              removeTask,
              changeDate,
@@ -114,7 +120,8 @@ export const StateContext = ({children}) => {
              getPriority,
              createTask,
              toggleModal,
-             toggleDrawer,
+             toggleDrawer,      
+             showTasksList,  
              }}>
             {children}
         </contex.Provider>
