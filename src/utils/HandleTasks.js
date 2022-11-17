@@ -28,19 +28,17 @@ export const StateContext = ({children}) => {
         }
     };
 
-    const removeTask = (task, action) => {
+    const removeTask = (index, action) => {
         switch(action) {
             case 'Task List':
-                const newTaskArr = taskList
-                const newTaskindex = newTaskArr.indexOf(task)
-                newTaskArr.splice(newTaskindex, 1)
-                return setTaskList(newTaskArr)
+                const newTaskArr = taskList.filter((_, i) => i !== index);
+                setTaskList(newTaskArr);
+               return 
                 
             case 'Finished Task':
-                const newFinishedArr = completedTask
-                const newFinishedindex = newFinishedArr.indexOf(task)
-                newFinishedArr.splice(newFinishedindex, 1)
-                return setCompletedTask(newFinishedArr)
+                const newCompletedArr = completedTask.filter((_, i) => i !== index);
+                setCompletedTask(newCompletedArr);
+                return
 
             default:
                 return null

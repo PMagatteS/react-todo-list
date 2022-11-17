@@ -7,7 +7,7 @@ const TaksTable = () => {
 
   return <Box>
    
-    {showTasks?taskList.map((el, index) => (<Task task={el} key={index} ></Task>)) : completedTask.map((el, index) => (<Task task={el} key={index} ></Task>))}
+    {showTasks?taskList.map((el, index) => (<Task task={el} index={index} key={index} ></Task>)) : completedTask.map((el, index) => (<Task task={el} key={index} ></Task>))}
     
   </Box>;
 };

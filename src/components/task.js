@@ -5,7 +5,7 @@ import {cardStyle} from "../style"
 import {useStateContext} from "../utils/HandleTasks"
 
 
-const Task = (props) => {
+const Task = ({task, index}) => {
   const {removeTask} = useStateContext()
   return <div>
  
@@ -13,13 +13,13 @@ const Task = (props) => {
       <CardContent>
         <Box sx={cardStyle.cardBox}>
         
-        {props.task.completed?<Checkbox margin={'auto'}  defaultChecked/>:<Checkbox margin={'auto'}  /> }   
+        {task.completed?<Checkbox margin={'auto'}  defaultChecked/>:<Checkbox margin={'auto'}  /> }   
 
         <Typography sx={cardStyle.cardTypography} >
-          {props.task.name}
+          {task.name}
         </Typography>
        
-        <Delete style={cardStyle.trashIcon} onClick={() => removeTask(props.task, 'Task List') }></Delete>
+        <Delete style={cardStyle.trashIcon} onClick={() => removeTask(index, 'Task List') }></Delete>
         </Box>
       </CardContent>
     </Card>
