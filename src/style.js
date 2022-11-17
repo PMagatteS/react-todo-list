@@ -49,3 +49,8 @@ export const navbarStyle={
 
     },
 }
+
+export const taskTable = {
+    display : "flex",
+    marginTop: "200px",
+}

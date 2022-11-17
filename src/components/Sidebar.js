@@ -34,7 +34,7 @@ const Sidebar = () => {
   const {openDrawer, toggleDrawer} = useStateContext();
 
   return(<div>
-    <Box sx={{marginTop: "200px", width: "fit-content", display:["none", "block", "block"]}}>
+    <Box sx={{ width: "fit-content", display:["none", "block", "block"]}}>
 
     <OptionList/>
     </Box>
