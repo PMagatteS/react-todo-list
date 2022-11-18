@@ -20,7 +20,7 @@ const Task = ({task, index}) => {
 
     }
   }
-  const borderColor = {bordrer: "2px solid " + taskColor()}
+  const borderColor = {border: "2px solid " + taskColor()}
   
 
   return <div>
