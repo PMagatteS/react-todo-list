@@ -79,12 +79,13 @@ export const StateContext = ({children}) => {
         }
         const task = {
             name : taskName,
-            date: date,
+            date: dayjs(date).format('YYYY-MM-DD HH:mm:ss').toString(),
             priority: priority,
             completed: false
         }
 
         addTask(task, 'Task List')
+        toggleModal()
     }
 
     const toggleModal = () => {

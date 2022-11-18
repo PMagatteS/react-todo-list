@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
-import { AddCircleOutlineRounded, Menu } from "@material-ui/icons";
+import { AddCircle, Menu } from "@material-ui/icons";
 import { useStateContext } from "../utils/HandleTasks";
 import { navbarStyle } from "../style";
 
@@ -20,7 +20,7 @@ const Navbar = () => {
             Todo list
           </Typography>
           <IconButton color="inherit" onClick={toggleModal} sx={navbarStyle.addButton} >
-            <AddCircleOutlineRounded style={{ fontSize: 40 }} ></AddCircleOutlineRounded>
+            <AddCircle style={{ fontSize: 40 }} ></AddCircle>
           </IconButton>
           <IconButton color="inherit" onClick={toggleDrawer}  sx={navbarStyle.burgerMenu} >
             <Menu style={{ fontSize: 40 }}></Menu>
@@ -28,7 +28,7 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
           <IconButton color="primary"  onClick={toggleModal} sx={navbarStyle.addButtonMobile} >
-            <AddCircleOutlineRounded style={{ fontSize: 60 }} ></AddCircleOutlineRounded>
+            <AddCircle style={{ fontSize: 80 }} ></AddCircle>
           </IconButton>
     </div>
   );
