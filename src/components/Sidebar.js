@@ -6,23 +6,24 @@ import { ListAlt, AssignmentTurnedIn } from "@material-ui/icons";
 
 
 const OptionList = () => {
+  const {showTasks, showTasksList} = useStateContext()
   return(  
   <Box>
   <List>
-    <ListItem>
-      <ListItemButton>
+    <ListItem selected={showTasks}>
+      <ListItemButton onClick={() => showTasksList(true)}>
         <ListItemIcon>
         <ListAlt/>
         </ListItemIcon>
       <ListItemText primary="Tasks" />
       </ListItemButton>
     </ListItem>
-    <ListItem>
-      <ListItemButton>
+    <ListItem selected={!showTasks}>
+      <ListItemButton onClick={() => showTasksList(false)}>
         <ListItemIcon>
         <AssignmentTurnedIn/>
         </ListItemIcon>
-      <ListItemText primary="Finished Tasks" />
+      <ListItemText primary="Completed Tasks" />
       </ListItemButton>
     </ListItem>
   </List>

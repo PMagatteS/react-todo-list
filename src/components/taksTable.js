@@ -11,7 +11,7 @@ const TaksTable = () => {
       <Sidebar></Sidebar>   
       <Box sx={{flexGrow:1, margin: "10px"}}>
 
-    {showTasks?taskList.map((el, index) => (<Task task={el} index={index} key={index} ></Task>)) : completedTask.map((el, index) => (<Task task={el} key={index} ></Task>))}
+    {showTasks?taskList.map((el, index) => (<Task task={el} index={index} key={index} ></Task>)) : completedTask.map((el, index) => (<Task task={el} index={index} key={index} ></Task>))}
       </Box>
     
   </Box>;

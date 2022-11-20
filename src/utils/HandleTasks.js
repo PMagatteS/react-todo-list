@@ -20,7 +20,7 @@ export const StateContext = ({children}) => {
         switch(action) {
             case 'Task List':
                 return setTaskList((previous) => [task, ...previous])
-            case 'Finished Task':
+            case 'Completed Task':
                 return setCompletedTask((previous) => [task, ...previous])
             default:
                 return null
@@ -35,7 +35,7 @@ export const StateContext = ({children}) => {
                 setTaskList(newTaskArr);
                return 
                 
-            case 'Finished Task':
+            case 'Completed Task':
                 const newCompletedArr = completedTask.filter((_, i) => i !== index);
                 setCompletedTask(newCompletedArr);
                 return
@@ -101,6 +101,21 @@ export const StateContext = ({children}) => {
         setShowTasks(bool)
     }
 
+    const completeTask = (task, index) => {
+        const newtask = task
+        newtask.completed = !newtask.completed
+        removeTask(index, "Task List")
+        addTask(newtask, "Completed Task")
+    }
+    
+    const uncompletedTask = (task, index) => {
+        const newtask = task
+        newtask.completed = !newtask.completed
+        removeTask(index, "Completed Task")
+        addTask(newtask, "Task List")
+
+    }
+
     return (
         <contex.Provider 
         value={{
@@ -120,7 +135,9 @@ export const StateContext = ({children}) => {
              createTask,
              toggleModal,
              toggleDrawer,      
-             showTasksList,  
+             showTasksList, 
+             completeTask, 
+             uncompletedTask,
              }}>
             {children}
         </contex.Provider>

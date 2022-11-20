@@ -6,7 +6,7 @@ import {useStateContext} from "../utils/HandleTasks"
 
 
 const Task = ({task, index}) => {
-  const {removeTask} = useStateContext()
+  const {removeTask, completeTask, uncompletedTask} = useStateContext()
   const taskColor = () => {
     switch(task.priority){
       case 'Low':
@@ -21,15 +21,13 @@ const Task = ({task, index}) => {
     }
   }
   const borderColor = {border: "2px solid " + taskColor()}
-  
-
+  cardStyle.cardTypography.textDecoration = task.completed?"line-through": "none"
   return <div>
  
     <Card raised={true} sx={cardStyle.card}>
       <CardContent sx={borderColor}>
         <Box sx={cardStyle.cardBox }>
-        
-        {task.completed?<Checkbox margin={'auto'}  defaultChecked/>:<Checkbox margin={'auto'}  /> }   
+        {!task.completed?<Checkbox margin={'auto'} onChange={() => completeTask(task, index)}  checked={task.completed}/>:<Checkbox margin={'auto'} onChange={() => uncompletedTask(task, index)}  checked={task.completed}/>}
 
         <Typography sx={cardStyle.cardTypography} >
           {task.name}
@@ -38,8 +36,9 @@ const Task = ({task, index}) => {
         <Typography sx={{margin: "auto"}}>
           {task.date}
         </Typography>
-       
-        <Delete style={cardStyle.trashIcon} onClick={() => removeTask(index, 'Task List') }></Delete>
+        {task.completed?<Delete style={cardStyle.trashIcon} onClick={() => removeTask(index, "Completed Task") }></Delete>:<Delete style={cardStyle.trashIcon} onClick={() => removeTask(index, "Task List") }></Delete>}   
+
+        
         </Box>
       </CardContent>
     </Card>
