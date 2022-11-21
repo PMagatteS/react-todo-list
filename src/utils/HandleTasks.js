@@ -14,6 +14,7 @@ export const StateContext = ({children}) => {
     const [openModal, setOpenModal] = useState(false) 
     const [openDrawer, setOpenDrawer] = useState(false)  
     const [showTasks, setShowTasks] = useState(true)
+    const [errors, setErrors] = useState({textFieldError: "", dateError: ""})
   
 
     const addTask = (task, action) => {
@@ -49,14 +50,22 @@ export const StateContext = ({children}) => {
     const changeDate = (newValue) => {
         const newDate = dayjs(newValue).toString()
         if(!dayjs().isBefore(newDate)||dayjs(newValue).toString()==="Invalid Date"){
-          console.log('will handle this error later');
+         setErrors((previous) => ({...previous, dateError:"Invalid Date"}))
+         setDate(newValue);
+         
         }else{
-          setDate(newValue);
+            setDate(newValue);
+            setErrors((previous) => ({...previous, dateError:""}))
         }
       };
      
     const getName = (e) => {
         setTaskName(e.target.value)
+        if(e.target.value.length > 0){
+            setErrors((previous) => ({...previous, textFieldError:""}))            
+
+        }
+                 
         
     };
     
@@ -67,14 +76,20 @@ export const StateContext = ({children}) => {
 
     const createTask = () => {
 
-        if(dayjs().isAfter(date)){
-            // will handle this error later
-           return 
-
+        if(dayjs().isAfter(date) && taskName.length  < 1){
+            setErrors((previous) => ({...previous, dateError:"Invalid Date"}))
+            setErrors((previous) => ({...previous, textFieldError:"This field is required"}))            
+            return 
+            
         }
-
-        if (taskName.length  < 1){
-            // will handle this error later
+        else if(dayjs().isAfter(date)){
+            setErrors((previous) => ({...previous, dateError:"Invalid Date"}))
+            return 
+            
+        }
+        
+        else if (taskName.length  < 1){
+            setErrors((previous) => ({...previous, textFieldError:"This field is required"}))            
            return 
         }
         const task = {
@@ -85,6 +100,7 @@ export const StateContext = ({children}) => {
         }
 
         addTask(task, 'Task List')
+        setTaskName("")
         toggleModal()
     }
 
@@ -127,6 +143,7 @@ export const StateContext = ({children}) => {
              openModal,
              openDrawer,
              showTasks,
+             errors,
              addTask,
              removeTask,
              changeDate,

@@ -1,6 +1,7 @@
 import {
   Box,
   FormControl,
+  FormHelperText,
   TextField,
   InputLabel,
   Select,
@@ -20,7 +21,7 @@ import React from "react";
 
 const ModalForm = () => {
 
-  const {date, changeDate, getName, priority, getPriority, openModal, toggleModal, createTask} = useStateContext();
+  const {date, changeDate, getName, priority, getPriority, openModal, toggleModal, createTask, errors} = useStateContext();
   
   return (
     <div>
@@ -34,8 +35,9 @@ const ModalForm = () => {
          <IconButton color="primary" onClick={toggleModal} sx={formStyle.closeButton} >
             <Close></Close>
           </IconButton>
-        <FormControl >
+        <FormControl error >
           <TextField variant="standard" required label="Choose a task name"  onChange={getName} ></TextField>
+          <FormHelperText id="component-error-text"> {errors.textFieldError} </FormHelperText>
         </FormControl>
         <FormControl variant="standard">
           <InputLabel id="priority-label">Priority</InputLabel>
@@ -45,7 +47,7 @@ const ModalForm = () => {
             <MenuItem value="High"  >High</MenuItem>
           </Select>
         </FormControl>
-        <FormControl >
+        <FormControl error >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
               variant="standard"
@@ -55,6 +57,7 @@ const ModalForm = () => {
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
+          <FormHelperText id="component-error-text"> {errors.dateError} </FormHelperText>
         </FormControl>
         <Button  variant="contained" onClick={createTask} >Create task</Button>
       </Box>
