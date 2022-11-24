@@ -34,7 +34,7 @@ const OptionList = () => {
 const Sidebar = () => {
   const {openDrawer, toggleDrawer} = useStateContext();
 
-  return(<div>
+  return(<>
     <Box sx={{ width: "fit-content", display:["none", "block", "block"]}}>
 
     <OptionList/>
@@ -49,7 +49,7 @@ const Sidebar = () => {
     <OptionList/>
         </Drawer>
             
-       </div> )
+       </> )
 };
 
 export default Sidebar;

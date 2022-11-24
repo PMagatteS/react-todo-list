@@ -7,7 +7,7 @@ import { navbarStyle } from "../style";
 const Navbar = () => {
   const {toggleModal, toggleDrawer} = useStateContext()
   return (
-    <div>
+    <>
       <AppBar position="absolute">
         <Toolbar>
           <Typography
@@ -30,7 +30,7 @@ const Navbar = () => {
           <IconButton color="primary"  onClick={toggleModal} sx={navbarStyle.addButtonMobile} >
             <AddCircle style={{ fontSize: 80 }} ></AddCircle>
           </IconButton>
-    </div>
+    </>
   );
 };
 

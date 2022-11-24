@@ -22,7 +22,7 @@ const Task = ({task, index}) => {
   }
   const borderColor = {border: "2px solid " + taskColor()}
   cardStyle.cardTypography.textDecoration = task.completed?"line-through": "none"
-  return <div>
+  return <>
  
     <Card raised={true} sx={cardStyle.card}>
       <CardContent sx={borderColor}>
@@ -42,7 +42,7 @@ const Task = ({task, index}) => {
         </Box>
       </CardContent>
     </Card>
-  </div>;
+  </>;
 };
 
 export default Task;

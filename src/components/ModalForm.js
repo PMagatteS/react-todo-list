@@ -24,7 +24,7 @@ const ModalForm = () => {
   const {date, changeDate, getName, priority, getPriority, openModal, toggleModal, createTask, errors} = useStateContext();
   
   return (
-    <div>
+    <>
       <Modal
        open={openModal}
        onClose={toggleModal}
@@ -63,7 +63,7 @@ const ModalForm = () => {
       </Box>
           </Modal>
 
-    </div>
+    </>
   );
 };
 
