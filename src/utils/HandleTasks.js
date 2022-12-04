@@ -3,7 +3,7 @@ import React, {useContext, createContext, useState} from 'react';
 
 
 
-const contex = createContext();
+const context = createContext();
 
 export const StateContext = ({children}) => {
     const [taskName, setTaskName] = useState("");
@@ -133,7 +133,7 @@ export const StateContext = ({children}) => {
     }
 
     return (
-        <contex.Provider 
+        <context.Provider 
         value={{
             taskList,
              completedTask,
@@ -157,8 +157,8 @@ export const StateContext = ({children}) => {
              uncompletedTask,
              }}>
             {children}
-        </contex.Provider>
+        </context.Provider>
     )
 }
 
-export const useStateContext = () =>  useContext(contex)
+export const useStateContext = () =>  useContext(context)
